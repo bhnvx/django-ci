@@ -1,24 +1,55 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[tool.black]
+line-length = 120
+
+[tool.coverage.report]
+fail_under = 0
+show_missing = true
+
+[tool.coverage.run]
+branch = true
+omit = [
+  ".mypy_cache/**/*",
+  ".pytest_cache/**/*",
+  "app/*/tests/*",
+  "manage.py"
+]
+source = ["app"]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+disallow_subclassing_any = false
+exclude = "fabfile"
+ignore_missing_imports = true
+implicit_reexport = true
+plugins = "pydantic.mypy"
+python_version = "3.11"
+show_error_codes = true
+strict = true
+
 [tool.poetry]
-name = "django-ci"
-version = "0.1.0"
-description = ""
 authors = ["bhnvx <xzt______@naver.com>"]
+description = ""
+name = "django-ci"
 readme = "README.md"
+version = "0.1.0"
 
 [tool.poetry.dependencies]
-python = "^3.11"
 django = "^4.2"
-djangorestframework = "^3.14.0"
 django-filter = "^23.5"
-
+djangorestframework = "^3.14.0"
+pydantic = "^2.6.3"
+python = "^3.11"
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.8.0"
+black = {extras = ["d"], version = "^24.2.0"}
 coverage = "^7.4.3"
 isort = "^5.13.2"
-black = {extras = ["d"], version = "^24.2.0"}
+mypy = "^1.8.0"
 pytest = "^8.0.2"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+toml-sort = "^0.23.1"
