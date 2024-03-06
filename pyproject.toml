@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "django-ci"
+version = "0.1.0"
+description = ""
+authors = ["bhnvx <xzt______@naver.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2"
+djangorestframework = "^3.14.0"
+django-filter = "^23.5"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.8.0"
+coverage = "^7.4.3"
+isort = "^5.13.2"
+black = {extras = ["d"], version = "^24.2.0"}
+pytest = "^8.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
