@@ -40,7 +40,10 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache-venv.outputs.cache-hit != 'true'
-        run: poetry install
+        run: |
+          poetry config virtualenvs.in-project true
+          poetry config virtualenvs.path "./.venv"
+          poetry install
 
       - name: Run Black
         run: poetry run black . --check
@@ -99,10 +102,13 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache-venv.outputs.cache-hit != 'true'
-        run: poetry install
+        run: |
+          poetry config virtualenvs.in-project true
+          poetry config virtualenvs.path "./.venv"
+          poetry install
 
       - name: Run Pytest
         run: |
-          poetry run coverage run -m pytest --asyncio-mode=auto
+          poetry run coverage run -m pytest
           poetry run coverage report -m
           poetry run coverage html
