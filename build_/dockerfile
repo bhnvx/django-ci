@@ -1,0 +1,18 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+
+RUN sed -i 's/archive.ubuntu.com/ftp.kaist.ac.kr/g' /etc/apt/sources.list
+RUN apt-get update && apt-get install -y software-properties-common
+RUN apt-get install -y default-libmysqlclient-dev gcc
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+COPY ../pyproject.toml .
+COPY ../poetry.lock .
+RUN /root/.local/bin/poetry install
+
+COPY ../. .
+
+EXPOSE 8000
+
+CMD []

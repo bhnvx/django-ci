@@ -14,7 +14,7 @@ branch = true
 omit = [
   ".mypy_cache/**/*",
   ".pytest_cache/**/*",
-  "app/*/tests/*",
+  "app/**/test.py",
   "manage.py"
 ]
 source = ["app"]
