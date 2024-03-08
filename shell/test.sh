@@ -20,8 +20,8 @@ echo "Sort pyproject.toml"
 poetry run toml-sort pyproject.toml --all --in-place
 echo "OK"
 
-echo "Starting pytest with coverage"
-poetry run coverage run -m pytest
+echo "Starting Django test with coverage"
+poetry run coverage run manage.py test
 poetry run coverage report -m
 poetry run coverage html
 
