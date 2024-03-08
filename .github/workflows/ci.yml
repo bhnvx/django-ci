@@ -107,7 +107,7 @@ jobs:
           poetry config virtualenvs.path "./.venv"
           poetry install
 
-      - name: Run Pytest
+      - name: Run test
         run: |
           poetry run coverage run manage.py test
           poetry run coverage report -m
