@@ -36,7 +36,7 @@ jobs:
         uses: actions/cache@v2
         with:
           key: python-${{ steps.setup-python.outputs.python-version }}-poetry-lock-${{ hashFiles('poetry.lock') }}-toml-${{ hashFiles('pyproject.toml') }}-poetry-1.4.2
-          path: /home/runner/.cache/pypoetry/virtualenvs/
+          path: ./.venv
 
       - name: Install dependencies
         if: steps.cache-venv.outputs.cache-hit != 'true'
@@ -98,7 +98,7 @@ jobs:
         uses: actions/cache@v2
         with:
           key: python-${{ steps.setup-python.outputs.python-version }}-poetry-lock-${{ hashFiles('poetry.lock') }}-toml-${{ hashFiles('pyproject.toml') }}
-          path: /home/runner/.cache/pypoetry/virtualenvs/
+          path: ./.venv
 
       - name: Install dependencies
         if: steps.cache-venv.outputs.cache-hit != 'true'
